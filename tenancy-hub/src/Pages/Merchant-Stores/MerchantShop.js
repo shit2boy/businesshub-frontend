@@ -51,7 +51,7 @@ const MerchantShops = ({ shops, loadUser }, props) => {
 
   const onChanges = (e) => {
     setSelectedshop(e.target.value);
-    console.log(selectedshop);
+    // console.log(selectedshop);
   };
 
   return (
@@ -87,7 +87,7 @@ const MerchantShops = ({ shops, loadUser }, props) => {
               {shops !== null &&
                 shops.length > 0 &&
                 shops.map((s) => (
-                  <option key={s.id} value={s.storeName}>
+                  <option key={s.id} value={s.id}>
                     {s.storeName}
                   </option>
                 ))}

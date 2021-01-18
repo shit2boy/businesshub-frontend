@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AddFormProduct from "../AddProductForm/AddFormProduct";
 import CreateShop from "../CreateShop/CreateShop";
 import Notification from "./Notification/Notification";
+import Home from "./MerchantHome/Home";
 import MerchantShop from "../../Pages/Merchant-Stores/MerchantShop";
 import OrderedItems from "./OrdersDisplay/OrderedItems";
 import { NavLink } from "react-router-dom";
@@ -19,7 +20,7 @@ const MerchantDashboard = (props) => {
       path: "/admin",
       exact: true,
       sidebar: () => <div>home!</div>,
-      main: () => <h2>Home</h2>,
+      main: () => <Home />,
     },
 
     {
@@ -44,7 +45,7 @@ const MerchantDashboard = (props) => {
     },
     {
       path: "/admin/selectshop",
-      sidebar: () => <div>Onlinne-shop</div>,
+      sidebar: () => <div>Online-shop</div>,
       // main: () => <Products stores={user.shops} />,
       main: () => <MerchantShop label="Oniline-shop" />,
     },

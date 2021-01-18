@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Button } from "react-bootstrap";
 // import Login from "../../Pages/Login-Modal/Login";
+// import SearchBtn from "../CustomButton/CustomButton";
 import SignUpButton from "../CustomButton/CustomButton";
 import { connect } from "react-redux";
 import { logOut } from "../../actions/AuthAction";
+import { filterProduct } from "../../actions/productAction";
 import ChangeLocation from "../SelectCountry/ChangeLocation";
 import "./Navbar.css";
 
-const NavBar = ({ cart, logOut }) => {
+const NavBar = ({ cart, logOut, filterProduct }) => {
   // const [showNav, setShowNav] = useState(false);
   const history = useHistory();
   const [isCustomer, setIsCustomer] = useState(false);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     if (localStorage.token) {
@@ -21,6 +24,18 @@ const NavBar = ({ cart, logOut }) => {
       setIsCustomer(true);
     }
   }, [isCustomer]);
+
+  // const onChange = (e) => {
+  //   const searchProduct = items.filter((item) => {
+  //     // console.log(item["name"]);
+  //     // console.log(e.target.value);
+  //     return (
+  //       item["name"].toLowerCase().indexOf(e.target.value.toLowerCase()) > -1
+  //     );
+  //   });
+  //   setText(searchRepo);
+  //   if (e.target.value === "") setText(repos);
+  // };
 
   // const isLogggedIn =(
   //   <Fragment>
@@ -39,6 +54,21 @@ const NavBar = ({ cart, logOut }) => {
     localStorage.removeItem("userType");
     localStorage.removeItem("isloggedIn");
     logOut();
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (search === "") {
+      alert("Please enter keyword to search");
+    } else {
+      filterProduct(search);
+      setSearch("");
+    }
+  };
+
+  const onChanges = (e) => {
+    setSearch(e.target.value);
+    // console.log(selectedshop);
   };
 
   return (
@@ -64,12 +94,19 @@ const NavBar = ({ cart, logOut }) => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto">
             <Nav.Item>
-              <form>
+              <form onSubmit={onSubmit}>
                 <input
-                  type="search"
+                  type="text"
+                  onChange={onChanges}
+                  name="search"
+                  value={search}
                   className="nav-search-input"
                   placeholder="search product"
                 />
+                {/* <SearchBtn>Search</SearchBtn> */}
+                <Button type="submit" className="p-2">
+                  Search
+                </Button>
               </form>
             </Nav.Item>
           </Nav>
@@ -141,4 +178,4 @@ const mapStateToProps = (state) => ({
   cart: state.product.cart,
 });
 
-export default connect(mapStateToProps, { logOut })(NavBar);
+export default connect(mapStateToProps, { logOut, filterProduct })(NavBar);

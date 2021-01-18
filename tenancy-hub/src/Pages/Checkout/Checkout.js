@@ -16,7 +16,7 @@ const Checkout = (props) => {
   const [payConfig, setpayConfig] = useState({});
   const [paymentOk, setPaymentOk] = useState("");
   const [errors, setError] = useState({});
-  const [total, setTotal] = useState("0");
+  // const [total, setTotal] = useState("0");
 
   const validateForm = () => {
     // let formField = user.formField;
@@ -73,11 +73,11 @@ const Checkout = (props) => {
   useEffect(() => {
     getCartItemsOnCheckout(setItemsInCart);
     // console.log(itemsInCart);
-    const amountToPay = itemsInCart.reduce(
-      (allQty, item) => allQty + item.product["amount"] * item.quantity,
-      0
-    );
-    setTotal(amountToPay);
+    // const amountToPay = itemsInCart.reduce(
+    //   (allQty, item) => allQty + item.product["amount"] * item.quantity,
+    //   0
+    // );
+    // setTotal(amountToPay);
     if (itemsInCart.lenght > 0) {
       setLoading(!loading);
     }

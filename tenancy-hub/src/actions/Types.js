@@ -4,6 +4,7 @@ export const GET_PREVIOUS_CARTS = " GET_PREVIOUS_CARTS";
 export const GET_All_PRODUCTS = " GET_All_PRODUCTS";
 export const DELETE_ITEM = " DELETE_ITEM";
 export const CLEAR_CART = " CLEAR_CART";
+export const FILTER_PRODUCT = " FILTER_PRODUCT";
 export const INCREASE_CART_ITEM = " INCREASE_CART_ITEM";
 export const DECREASE_CART_ITEM = " DECREASE_CART_ITEM";
 export const GET_TOTAL = " GET_TOTAL";

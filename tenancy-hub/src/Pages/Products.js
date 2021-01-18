@@ -31,7 +31,7 @@ const Products = ({
   } = match;
 
   useEffect(() => {
-    if (localStorage.token && localStorage.userType === "MERCHANTS") {
+    if (localStorage.token && localStorage.userType === "MERCHANT") {
       getItems(storeName);
     } else {
       setCurrencyId(localStorage.currencyId);

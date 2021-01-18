@@ -3,6 +3,7 @@ import {
   GET_All_PRODUCTS,
   GET_PREVIOUS_CARTS,
   ADD_TO_CARTS,
+  FILTER_PRODUCT,
   DELETE_ITEM,
   DECREASE_CART_ITEM,
   GET_TOTAL,
@@ -40,6 +41,13 @@ export default (state = initialState, action) => {
         loading: false,
       };
     case GET_All_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload,
+        items: action.payload,
+        loading: false,
+      };
+    case FILTER_PRODUCT:
       return {
         ...state,
         products: action.payload,

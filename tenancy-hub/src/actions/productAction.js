@@ -8,11 +8,12 @@ import {
   DELETE_ITEM,
   GET_TOTAL,
   GET_PREVIOUS_CARTS,
+  FILTER_PRODUCT,
   DECREASE_CART_ITEM,
   GET_CART_LENGTH,
 } from "../actions/Types";
 
-export const getItems = (store) => async (dispatch) => {
+export const getItems = (storeId) => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
@@ -23,8 +24,12 @@ export const getItems = (store) => async (dispatch) => {
   };
   try {
     // const res = await axios.get("https://fakestoreapi.com/products");
-    const res = await axios.get(
-      `https://fathomless-harbor-02544.herokuapp.com/product/shop/${store}`,
+    const id = localStorage.currencyId;
+    const shopToView = { shopId: storeId };
+    console.log(storeId);
+    const res = await axios.post(
+      `https://fathomless-harbor-02544.herokuapp.com/product/filter/${id}`,
+      shopToView,
       config
     );
     console.log(res.data);
@@ -73,6 +78,31 @@ export const getUserCartItems = () => async (dispatch) => {
     );
     // console.log(res.data);
     dispatch({ type: GET_PREVIOUS_CARTS, payload: res.data });
+  } catch (err) {
+    console.log(err);
+    // dispatch({ type: ITEM_ERROR, payload: err.response.data });
+  }
+};
+export const filterProduct = (text) => async (dispatch) => {
+  // if (localStorage.token) {
+  //   setAuthToken(localStorage.token);
+  // }
+  const config = {
+    headers: {
+      "content-Type": "application/json",
+    },
+  };
+  const keyword = { name: text };
+  const currencyId = localStorage.currencyId;
+  try {
+    const res = await axios.post(
+      `https://fathomless-harbor-02544.herokuapp.com/product/general-filter/${currencyId}`,
+      keyword,
+
+      config
+    );
+    // console.log(res.data);
+    dispatch({ type: FILTER_PRODUCT, payload: res.data.products });
   } catch (err) {
     console.log(err);
     // dispatch({ type: ITEM_ERROR, payload: err.response.data });
