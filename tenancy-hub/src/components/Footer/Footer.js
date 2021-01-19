@@ -14,38 +14,55 @@ const Footer = () => {
               doing business. Sell at any time, any place at your own pace!
             </p>
             <ul className="d-flex">
-              <li>
-                <i className="fab fa-facebook"></i>
+              <li className="p-2">
+                <i className="fab fa-facebook fa-2x"></i>
               </li>
-              <li>
-                <i className="fab fa-linkedin"></i>
+              <li className="p-2">
+                <i className="fab fa-linkedin fa-2x"></i>
               </li>
-              <li>
-                <i className="fab fa-instagram"></i>
+              <li className="p-2">
+                <i className="fab fa-instagram fa-2x"></i>
               </li>
             </ul>
           </div>
-          <div className="col-lg-4 col-md-3 col-sm">
-            <div className="foot-courses-list">
-              <h4>Contact</h4>
-              <ul className="d-inline-block text-default">
-                <li>
-                  <a href="mailto:yusufsaheedtaiwo@gmail.com">
-                    yusufsaheedtaiwo@gmail.com
+          <div className="col-lg-3 col-md-3 col-sm">
+            {/* <div className="foot-courses-list"> */}
+            <h4>Contact</h4>
+            <div>
+              <div>
+                <p className="contLink">
+                  {" "}
+                  <a
+                    href="mailto:yusufsaheedtaiwo@gmail.com"
+                    style={{ color: "black" }}
+                  >
+                    <i className="fas fa-phone" /> yusufsaheedtaiwo@gmail.com
                   </a>
-                </li>
-                <li>
-                  <a href="mailto:writeshittu@gmai.com">For support</a>
-                </li>
-                <li>
-                  <a href="mailto:yusufsaheedtaiwo@gmail.com">Inquiries</a>
-                </li>
-                <li>
-                  <a href="mailto:yusufsaheedtaiwo@gmail.com">
-                    careers@tenancyhub.co
+                </p>
+
+                <p className="contLink">
+                  {" "}
+                  <a
+                    href="mailto:writeshittu@gmai.com"
+                    style={{ color: "black" }}
+                  >
+                    <i className="fas fa-tools" /> For support
                   </a>
-                </li>
-              </ul>
+                </p>
+                <p className="contLink">
+                  <a
+                    href="mailto:yusufsaheedtaiwo@gmail.com"
+                    style={{ color: "black" }}
+                  >
+                    <i className="fas fa-info" /> Inquiries
+                  </a>
+                </p>
+                <p className="contLink">
+                  <a href="mailto:yusufsaheedtaiwo@gmail.com">
+                    <i className="fas fa-book" /> careers@tenancyhub.co
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
           <div className="col-lg-3 col-md-6 col-sm">

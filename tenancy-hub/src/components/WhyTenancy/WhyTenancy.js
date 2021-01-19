@@ -44,7 +44,7 @@ const WhyTenancy = () => {
         </div>
         <div className="row">
           {benefits.map((item, index) => (
-            <div className="col-sm col-md-3 col-lg-3 ma-2" key={index}>
+            <div className="col-sm col-md col-lg-3 ma-2" key={index}>
               <div className="card cardShadow">
                 <div className="icon">
                   <img src={item.icon} alt="icon" width="90px" />

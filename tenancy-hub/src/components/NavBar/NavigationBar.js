@@ -25,18 +25,6 @@ const NavBar = ({ cart, logOut, filterProduct }) => {
     }
   }, [isCustomer]);
 
-  // const onChange = (e) => {
-  //   const searchProduct = items.filter((item) => {
-  //     // console.log(item["name"]);
-  //     // console.log(e.target.value);
-  //     return (
-  //       item["name"].toLowerCase().indexOf(e.target.value.toLowerCase()) > -1
-  //     );
-  //   });
-  //   setText(searchRepo);
-  //   if (e.target.value === "") setText(repos);
-  // };
-
   // const isLogggedIn =(
   //   <Fragment>
   //     <li className="nav-item">
@@ -84,13 +72,14 @@ const NavBar = ({ cart, logOut, filterProduct }) => {
         sticky="top"
         variant="dark"
       >
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <div className="logo">
           <Link to="/">
             {" "}
             <span style={{ color: "#ffb31a", fontSize: "40px" }}>J</span>umga
           </Link>
         </div>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto">
             <Nav.Item>
@@ -140,34 +129,31 @@ const NavBar = ({ cart, logOut, filterProduct }) => {
                 </Link>
               )}
             </Nav.Item>
-            {/* <Nav.Item> */}
-            {localStorage.token &&
-            localStorage.userType === "MERCHANT" ? null : (
-              <span
-                className="nav-item mr-auto"
-                style={{ position: "relative" }}
-              >
-                <Link className="nav-link" to="/cart">
-                  <i className="fas fa-shopping-cart fa-2x"></i>
-
-                  {cart && (
-                    <p
-                      className="badge badge-danger"
-                      style={{
-                        position: "absolute",
-                        top: "-2px",
-                        right: "35PX",
-                      }}
-                    >
-                      {cart.length}
-                    </p>
-                  )}
-                </Link>
-              </span>
-            )}
-            {/* </Nav.Item> */}
           </Nav>
         </Navbar.Collapse>
+        <Nav>
+          {localStorage.token && localStorage.userType === "MERCHANT" ? null : (
+            <span className="nav-item mr-auto" style={{ position: "relative" }}>
+              <Link className="nav-link" to="/cart">
+                <i className="fas fa-shopping-cart fa-2x"></i>
+
+                {cart && (
+                  <p
+                    className="badge badge-danger"
+                    style={{
+                      position: "absolute",
+                      top: "-2px",
+                      right: "35PX",
+                    }}
+                  >
+                    {cart.length}
+                  </p>
+                )}
+              </Link>
+            </span>
+          )}
+          {/* </Nav.Item> */}
+        </Nav>
       </Navbar>
     </>
   );

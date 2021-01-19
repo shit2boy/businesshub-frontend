@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { useState } from "react";/
-// import { useEffect } from "react";
 import PayWithRave from "../../components/RaveGateway/PayWithRaveBtn";
 import { Subscribe } from "../../Services/MerchantTokaenPayment";
 import { loadMerchantInfo } from "../../Services/LoadMerchant-InfoUtil";
@@ -10,8 +8,10 @@ import { loadUser } from "../../actions/AuthAction";
 // import util from "../../utils/util";
 // import setAuthToken from "../../utils/SetAuthToken";
 import "./pay.css";
+import { withRouter, useHistory } from "react-router-dom";
 
-const PaymentPage = ({ user, loadUser }, props) => {
+const PaymentPage = ({ user, loadUser }) => {
+  const history = useHistory();
   const [config, setConfig] = useState({});
   const [details, setDetails] = useState({});
   useEffect(() => {
@@ -23,7 +23,7 @@ const PaymentPage = ({ user, loadUser }, props) => {
   }, []);
 
   const onSuccess = () => {
-    props.history("/admin");
+    history.push("/admin");
   };
 
   return (
@@ -49,4 +49,4 @@ const mapStateToProps = (state) => ({
   user: state.Auth,
 });
 
-export default connect(mapStateToProps, { loadUser })(PaymentPage);
+export default withRouter(connect(mapStateToProps, { loadUser })(PaymentPage));

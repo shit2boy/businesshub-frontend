@@ -62,11 +62,11 @@ const AddFormProduct = (props) => {
 
   const handleChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
-    console.log(product);
+    // console.log(product);
 
     if (e.target.name === "file") {
       setImage({ [e.target.name]: e.target.files[0] });
-      console.log(image);
+      // console.log(image);
     }
     // console.log(product);
   };
@@ -77,7 +77,7 @@ const AddFormProduct = (props) => {
   };
 
   const validateForm = () => {
-    console.log("dsdsdsdfe");
+    // console.log("dsdsdsdfe");
     let errors = {};
     let formIsValid = true;
 
@@ -153,7 +153,7 @@ const AddFormProduct = (props) => {
             />
           </div>
           <div>
-            <label>amount</label>
+            <label>Amount</label>
             <span
               className="d-block"
               style={{ color: "#dd2b0e", fontSize: "0.875rem" }}
@@ -180,10 +180,9 @@ const AddFormProduct = (props) => {
             </span>
             <label htmlFor="upload">
               Click to Upload Image for Item{" "}
-              <span
-                className="ml-1 fas fa-folder fa-2x"
-                aria-hidden="true"
-              ></span>
+              <span className="ml-1 fas fa-folder fa-2x" aria-hidden="true">
+                {}
+              </span>
               <input
                 type="file"
                 id="upload"
@@ -192,6 +191,15 @@ const AddFormProduct = (props) => {
                 onChange={triggerInputFile}
               />
             </label>
+            {image !== null && (
+              <span className="p-2" style={{ width: "60px" }}>
+                <img
+                  src={image === null ? null : URL.createObjectURL(image)}
+                  width="80px"
+                  alt="item uploaded"
+                />
+              </span>
+            )}
           </div>
 
           <div>

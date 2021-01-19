@@ -14,7 +14,7 @@ export const loadMerchantInfo = async (callBackFunction) => {
 
   try {
     const res = await axios.get(`${util}merchant/my-info`, config);
-    console.log(res.data.user.firstName);
+    // console.log(res.data.user.firstName);
     callBackFunction(res.data.user);
   } catch (err) {
     console.log(err);

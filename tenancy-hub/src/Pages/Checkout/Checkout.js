@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import FormInput from "../../components/Form-input/form-input.component";
 import PayWithRaveBtn from "../../components/RaveGateway/PayWithRaveBtn";
+import { Table } from "react-bootstrap";
 import SubmitAddress from "../../components/CustomButton/CustomButton";
 import {
   getCartItemsOnCheckout,
   getPaymentRefOnCheckout,
   checkoutPaymentUpdate,
 } from "../../Services/CheckoutUtils";
+import { deleteCartItem } from "../../Services/CartUtils";
 import "./Checkout.css";
 
 const Checkout = (props) => {
@@ -14,12 +16,10 @@ const Checkout = (props) => {
   const [loading, setLoading] = useState(false);
   const [deliveryInfo, setdeliveryInfo] = useState({});
   const [payConfig, setpayConfig] = useState({});
-  const [paymentOk, setPaymentOk] = useState("");
   const [errors, setError] = useState({});
   // const [total, setTotal] = useState("0");
 
   const validateForm = () => {
-    // let formField = user.formField;
     let errors = {};
     let formIsValid = true;
 
@@ -49,9 +49,6 @@ const Checkout = (props) => {
       setLoading(!loading);
       getPaymentRefOnCheckout(setpayConfig, deliveryInfo.address);
     }
-    // if (res.message === "200") {
-    //   await getPaymentRef(setPayRef);
-    // }
     console.log("see mrere");
   };
 
@@ -63,11 +60,16 @@ const Checkout = (props) => {
   };
 
   const onSuccess = () => {
-    checkoutPaymentUpdate(setPaymentOk, payConfig.checkoutId);
-    if (paymentOk === "200") {
-      console.log("successful");
+    checkoutPaymentUpdate(payConfig.checkoutId);
+    setTimeout(() => {
       props.history.push("/");
-    }
+    }, 1500);
+  };
+
+  const deleteItem = (item, id) => {
+    const cartItem = itemsInCart.filter((cart) => cart.id !== item.id);
+    setItemsInCart(cartItem);
+    deleteCartItem(item, id);
   };
 
   useEffect(() => {
@@ -181,28 +183,44 @@ const Checkout = (props) => {
                 <b>{itemsInCart.length}</b>
               </span>
             </h4>
-            {itemsInCart !== null &&
-              itemsInCart.length > 0 &&
-              itemsInCart.map((item, index) => (
-                <p key={index}>
-                  <span>{item.product["name"]}</span>{" "}
-                  <span style={{ float: "right" }}>
-                    &#8358; {item.product["amount"] * item.quantity}
-                  </span>
-                </p>
-              ))}
 
-            <hr />
-            {/* <p>
-              Total
-              <span
-                className="price"
-                style={{ color: "black", float: "right" }}
-              >
-                <b>&#8358; {total}</b> */}
-            {/* <b>&#8358; {total.toFixed(2)}</b> */}
-            {/* </span> */}
-            {/* </p> */}
+            <Table hover borderless responsive>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Amount</th>
+                  <th>Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                {itemsInCart !== null &&
+                  itemsInCart.length > 0 &&
+                  itemsInCart.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.product["name"]}</td>
+                      {/* <td>
+                {" "}
+                <span onClick={() => decreaseCart(t)} className="pointer">
+                  {" "}
+                  &#10094;{" "}
+                </span>
+                {t.quantity}{" "}
+                <span onClick={() => addToCart(t)} className="pointer">
+                  {" "}
+                  &#10095;
+                </span>
+              </td> */}
+                      <td>&#8358;{item.product["amount"] * item.quantity}</td>
+                      <td onClick={() => deleteItem(item, item.id)}>
+                        <i
+                          className="fas fa-trash fa-lg p-2"
+                          style={{ color: "black" }}
+                        ></i>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </Table>
           </div>
           {loading && (
             <div className="mt-3 text-center" style={{ width: "100%" }}>

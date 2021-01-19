@@ -45,7 +45,7 @@ export const getPaymentRefOnCheckout = async (callBackFunction, info) => {
     console.error(error);
   }
 };
-export const checkoutPaymentUpdate = async (callBackFunction, info) => {
+export const checkoutPaymentUpdate = async (info) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
@@ -63,7 +63,7 @@ export const checkoutPaymentUpdate = async (callBackFunction, info) => {
     );
 
     // console.log(res.data);
-    await callBackFunction("200");
+    // await callBackFunction("200");
   } catch (error) {
     console.error(error);
   }

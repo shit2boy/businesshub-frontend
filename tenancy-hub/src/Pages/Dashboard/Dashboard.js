@@ -74,7 +74,7 @@ const MerchantDashboard = (props) => {
         setUserDetails(res.data);
         setuserInfo(res.data.user);
         // setStorename(res.data.storeName);
-        console.log(res.data);
+        // console.log(res.data);
         localStorage.setItem("email", res.data.user["email"]);
         if (res.data.accountNumber === null) {
           props.history.push("/verify-merchant");
@@ -111,13 +111,13 @@ const MerchantDashboard = (props) => {
           <NavLink to="/admin" activeStyle={activeStyle}>
             <span className="fas fa-home">{""}</span> Home{" "}
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/admin/notification"
             onClick={toggleSideBar}
             activeStyle={activeStyle}
           >
             <span className="fas fa-envelope">{""}</span> Notification{" "}
-          </NavLink>
+          </NavLink> */}
           <NavLink
             to="/admin/add-product"
             onClick={toggleSideBar}
@@ -138,9 +138,9 @@ const MerchantDashboard = (props) => {
             <span className="fas fa-store">{""}</span>{" "}
             <MerchantShop label="Oniline-shop" />{" "}
           </NavLink>
-          <NavLink to="/admin" activeStyle={activeStyle}>
+          {/* <NavLink to="/admin" activeStyle={activeStyle}>
             <span className="fas fa-user-cog">{""}</span> Setting{" "}
-          </NavLink>
+          </NavLink> */}
         </div>
 
         <div id="main" className="">

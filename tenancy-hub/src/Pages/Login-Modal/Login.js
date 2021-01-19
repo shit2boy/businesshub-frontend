@@ -13,7 +13,7 @@ const Login = ({ login, isAuthenticated, error }, ...props) => {
     if (localStorage.token && localStorage.userType === "MERCHANT") {
       history.push("/admin");
       // window.href = "/admin";
-      console.log("ddffssd");
+      // console.log("ddffssd");
     }
     if (localStorage.token && localStorage.userType === "CUSTOMER") {
       history.push("/");

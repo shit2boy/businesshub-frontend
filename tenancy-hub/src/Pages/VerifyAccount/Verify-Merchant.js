@@ -63,7 +63,7 @@ const VerifyMercchant = (props) => {
       // console.log(accountNumber, id);
       validateDetails(setCheckdetail, user);
     }
-    console.log("see mrere");
+    // console.log("see mrere");
   };
   const onValidate = async (e) => {
     e.preventDefault();

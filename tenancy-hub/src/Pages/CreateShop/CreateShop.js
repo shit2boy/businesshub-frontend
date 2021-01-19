@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FormInput from "../../components/Form-input/form-input.component";
 import CreateShopBtn from "../../components/CustomButton/CustomButton";
+// import Modal from "react-bootstrap/Modal";
 import {
   getAvailableDispatchRider,
   getCurrencyType,
@@ -10,9 +11,13 @@ import {
 
 import PayWithRaveBtn from "../../components/RaveGateway/PayWithRaveBtn";
 import "./createShop.css";
+import axios from "axios";
+import util from "../../utils/util";
+import setAuthToken from "../../utils/SetAuthToken";
+import { useHistory } from "react-router-dom";
 
 const CreateShop = (props) => {
-  //   const history = useHistory();
+  const history = useHistory();
   const [shop, setShop] = useState({
     storeName: "",
     currencyId: " ",
@@ -27,14 +32,27 @@ const CreateShop = (props) => {
   const [loading, setLoading] = useState(false);
   const [payRef, setPayRef] = useState({});
   const [riderAvailable, setAvailable] = useState(true);
+  const [availableshops, setAvailableshops] = useState([]);
+
+  const ref = async () => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    try {
+      const res = await axios.get(`${util}merchant/my-info`);
+      setAvailableshops(res.data.shops);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     getCurrencyType(setCurrency);
-
+    ref();
     //eslint - disable - next - line;
   }, []);
 
-  const validateForm = (props) => {
+  const validateForm = () => {
     // let formField = user.formField;
     let errors = {};
     let formIsValid = true;
@@ -64,11 +82,12 @@ const CreateShop = (props) => {
     if (validateForm()) {
       setLoading(!loading);
       createShop(setRes, shop);
+      ref();
     }
     if (res.message === "200") {
       await getPaymentRef(setPayRef);
     }
-    console.log("see mrere");
+    // console.log("see mrere");
   };
 
   const onChanges = (e) => {
@@ -77,7 +96,7 @@ const CreateShop = (props) => {
       [e.target.name]: e.target.value,
     });
     setShopcreated({ [e.target.name]: e.target.value });
-    console.log(shopcreated);
+    // console.log(shopcreated);
     if (e.target.name === "shopId") {
       getPaymentRef(setPayRef, e.target.value);
     }
@@ -89,13 +108,21 @@ const CreateShop = (props) => {
     }
   };
 
+  const onSuccess = () => {
+    history.push("/admin");
+  };
+
   return (
     <div className="container">
       <div className="shop-form">
-        <h3 className="mb-2">
-          Pitch your tent on Tenancy-
-          <span style={{ color: "goldenrod" }}>Hub</span> to grow incomes
-        </h3>
+        <div className="text-center">
+          {" "}
+          <h4 className="mb-2">
+            Pitch your tent on Tenancy-
+            <span style={{ color: "goldenrod" }}>Hub</span> to grow incomes
+          </h4>
+        </div>
+
         <form onSubmit={onSubmit}>
           {/* <div className="formGroup"> */}
           <label htmlFor="bank-detail">Shop Name</label>
@@ -198,42 +225,48 @@ const CreateShop = (props) => {
               </CreateShopBtn>
             </div>
           )}
-          {/* {res.message === "200" && ( */}
-
-          {/* // )} */}
         </form>
 
-        {props.shopAvailable.length > 0 && (
+        {availableshops.length > 0 && (
           <>
             <div className=" mt-4 py-3">
               <div htmlFor="available shop" className="text-center">
                 <h5> Select Shop to pay</h5>
               </div>
+              <span
+                className="text-center"
+                style={{ color: "#dd2b0e", fontSize: "0.875rem" }}
+              >
+                {" "}
+                {payRef.message}
+              </span>
               <select
                 value={shopcreated.shopId}
                 onChange={onChanges}
                 name="shopId"
                 //   {!riderAvailable ? disabled: null}
               >
-                <option value="SELECT DISPATCH RIDER">SELECT SHOP</option>
-                {props.shopAvailable.map((s) => (
+                <option value="SELECT SHOP">SELECT SHOP</option>
+                {availableshops.map((s) => (
                   <option key={s.id} value={s.id}>
                     {s.storeName}
                   </option>
                 ))}
               </select>
-              <PayWithRaveBtn
-                // class="button"
-                // btnText="Pay Now to verify shop"
-                tx_ref={payRef.paymentReference}
-                currency={payRef.currency}
-                amount={payRef.amount}
-                name={shop.storeName}
-                phoneNumber=""
-                email={localStorage.getItem("email")}
-                storeName={`Payment for ${shop.storeName} Shop`}
-                // callback={onSuccess}
-              />
+              <div className="text-center">
+                <PayWithRaveBtn
+                  // class="button"
+                  // btnText="Pay Now to verify shop"
+                  tx_ref={payRef.paymentReference}
+                  currency={payRef.currency}
+                  amount={payRef.amount}
+                  name={shop.storeName}
+                  phoneNumber=""
+                  email={localStorage.getItem("email")}
+                  storeName={`Payment for ${shop.storeName} Shop`}
+                  callback={onSuccess}
+                />
+              </div>
             </div>
           </>
         )}
@@ -241,6 +274,7 @@ const CreateShop = (props) => {
     </div>
   );
 };
+
 // const mapStateToProps = (state) => ({
 //   authState: state.Auth.isAuthenticated,
 // });

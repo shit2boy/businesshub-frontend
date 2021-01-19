@@ -25,7 +25,6 @@ const Products = ({
     addToCart(item);
     notify();
   };
-  // const { storeName } = props.match.params;
   const {
     params: { storeName },
   } = match;
@@ -53,21 +52,31 @@ const Products = ({
   }
 
   return (
-    <div
-      className="container-fluid offset-1 mt-5"
-      style={{ marginBottom: "100px" }}
-    >
-      <div className="row">
-        {items.map((item) => (
-          <ProductCard
-            key={item.id}
-            item={item}
-            onClickToCart={onClickToCart}
-          />
-        ))}
-      </div>
-      <BackTop />
-    </div>
+    <>
+      {items.length > 0 ? (
+        <div
+          className="container-fluid offset-1 mt-5"
+          style={{ marginBottom: "100px" }}
+        >
+          <div className="row">
+            {items.map((item) => (
+              <ProductCard
+                key={item.id}
+                item={item}
+                onClickToCart={onClickToCart}
+              />
+            ))}
+          </div>
+          <BackTop />
+        </div>
+      ) : (
+        <div className="order-empty">
+          <div className="mt-5">
+            <h6>No item in store</h6>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

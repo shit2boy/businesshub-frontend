@@ -22,7 +22,7 @@ const Carts = ({
   history,
 }) => {
   const [total, setTotal] = useState(0);
-  const [response, setResponse] = useState("");
+  // const [response, setResponse] = useState("");
 
   useEffect(() => {
     // console.log(user);
@@ -41,12 +41,12 @@ const Carts = ({
     if (user === null) {
       history.push("/Login");
     } else {
-      cartItemsServices(setResponse, cart);
+      cartItemsServices(cart);
       // console.log("ready to checkout");
-      console.log(response);
-      if (response === "200") {
+      setTimeout(() => {
+        console.log("im callaed");
         history.push("/checkout");
-      }
+      }, 2000);
     }
   };
 
