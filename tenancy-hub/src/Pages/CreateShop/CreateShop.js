@@ -48,10 +48,9 @@ const CreateShop = (props) => {
 
   useEffect(() => {
     getCurrencyType(setCurrency);
-    setLoading(!loading);
     ref();
     //eslint - disable - next - line;
-  }, [availableshops, loading]);
+  }, [availableshops]);
   // useEffect(() => {
   //   effect
   //   return () => {
