@@ -168,7 +168,22 @@ const AddFormProduct = (props) => {
               placeholder="Item amount"
             />
           </div>
-          {/* </div> */}
+          <div>
+            <label>Delivery Fee</label>
+            <span
+              className="d-block"
+              style={{ color: "#dd2b0e", fontSize: "0.875rem" }}
+            >
+              {errors["deliveryFee"]}
+            </span>
+            <FormInput
+              type="text"
+              // value={amount}
+              name="deliveryFee"
+              onChange={handleChange}
+              placeholder="Delivery charge on item"
+            />
+          </div>
           <div>
             <label>Item Image</label>
 

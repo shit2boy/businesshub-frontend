@@ -48,9 +48,16 @@ const CreateShop = (props) => {
 
   useEffect(() => {
     getCurrencyType(setCurrency);
+    setLoading(!loading);
     ref();
     //eslint - disable - next - line;
-  }, []);
+  }, [availableshops, loading]);
+  // useEffect(() => {
+  //   effect
+  //   return () => {
+  //     cleanup
+  //   }
+  // }, [input])
 
   const validateForm = () => {
     // let formField = user.formField;
