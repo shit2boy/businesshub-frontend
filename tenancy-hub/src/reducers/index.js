@@ -9,9 +9,14 @@ const persistConfig = {
   storage,
   whitelist: ["Auth"],
 };
+const productPersistConfig = {
+  key: "product",
+  storage,
+  whitelist: ["cart"],
+};
 
 const rootReducer = combineReducers({
-  product: productReducer,
+  product: persistReducer(productPersistConfig, productReducer),
   Auth: AuthReducer,
 });
 
