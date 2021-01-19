@@ -111,13 +111,7 @@ const MerchantDashboard = (props) => {
           <NavLink to="/admin" activeStyle={activeStyle}>
             <span className="fas fa-home">{""}</span> Home{" "}
           </NavLink>
-          {/* <NavLink
-            to="/admin/notification"
-            onClick={toggleSideBar}
-            activeStyle={activeStyle}
-          >
-            <span className="fas fa-envelope">{""}</span> Notification{" "}
-          </NavLink> */}
+
           <NavLink
             to="/admin/add-product"
             onClick={toggleSideBar}
@@ -128,9 +122,7 @@ const MerchantDashboard = (props) => {
           <NavLink to="/admin/order" activeStyle={activeStyle}>
             <span className="fas fa-inbox">{""}</span> Orders{" "}
           </NavLink>
-          {/* <NavLink to="/admin" activeStyle={activeStyle}>
-          <span className="fas fa-user">{""}</span> Customers{" "}
-        </NavLink> */}
+
           <NavLink to="/admin/create-shop" activeStyle={activeStyle}>
             <span className="fas fa-store">{""}</span> Create Shop{" "}
           </NavLink>
@@ -138,9 +130,6 @@ const MerchantDashboard = (props) => {
             <span className="fas fa-store">{""}</span>{" "}
             <MerchantShop label="Oniline-shop" />{" "}
           </NavLink>
-          {/* <NavLink to="/admin" activeStyle={activeStyle}>
-            <span className="fas fa-user-cog">{""}</span> Setting{" "}
-          </NavLink> */}
         </div>
 
         <div id="main" className="">
