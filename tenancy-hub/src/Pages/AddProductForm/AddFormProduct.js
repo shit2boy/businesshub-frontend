@@ -57,7 +57,7 @@ const AddFormProduct = (props) => {
       position: "top-right",
       autoClose: 2000,
     });
-    setLoading(!loading);
+    // setLoading(!loading);
   };
 
   const handleChange = (e) => {
@@ -118,15 +118,17 @@ const AddFormProduct = (props) => {
     if (validateForm()) {
       setLoading(!loading);
       addProductUtil(setErrors, productPayload);
-      if (errors.message === 200) {
-        notify();
-      }
+
+      notify();
       setProduct({
         name: "",
         amount: "",
-        image: "",
+        // file: "",
+        shopId: "",
+        category: "",
         description: "",
       });
+      setLoading(false);
     }
   };
 
@@ -255,12 +257,6 @@ const AddFormProduct = (props) => {
                 </option>
               ))}
             </select>
-            {/* <FormInput
-              type="text"
-              name="category"
-              onChange={handleChange}
-              placeholder="Category product belongs"
-            /> */}
           </div>
           <div>
             <label htmlFor="store name">Select Store to Update </label>
@@ -292,7 +288,7 @@ const AddFormProduct = (props) => {
             {errors.message}
           </span>
           <AddProduct type="submit" style={{ width: "100%" }}>
-            {loading && <i class="spinner-border spinner-border-sm"></i>}
+            {loading && <i className="spinner-border spinner-border-sm"></i>}
             {!loading && "Add Product"}
           </AddProduct>
         </form>
