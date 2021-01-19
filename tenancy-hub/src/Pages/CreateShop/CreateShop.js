@@ -117,6 +117,9 @@ const CreateShop = (props) => {
   const onSuccess = () => {
     history.push("/admin");
   };
+  const onClose = () => {
+    history.push("/admin");
+  };
 
   return (
     <div className="container">
@@ -271,6 +274,7 @@ const CreateShop = (props) => {
                   email={localStorage.getItem("email")}
                   storeName={`Payment for ${shop.storeName} Shop`}
                   callback={onSuccess}
+                  onClose={onClose}
                 />
               </div>
             </div>

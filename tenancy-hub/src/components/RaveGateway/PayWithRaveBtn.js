@@ -44,6 +44,7 @@ const PayWithRaveBtn = (props) => {
             },
             onClose: () => {
               console.log("Payment closed");
+              props.onClose();
             },
           });
         }}

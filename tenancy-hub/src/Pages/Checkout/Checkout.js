@@ -65,6 +65,9 @@ const Checkout = (props) => {
       props.history.push("/");
     }, 1500);
   };
+  const onClose = () => {
+    console.log("payment closed");
+  };
 
   const deleteItem = (item, id) => {
     const cartItem = itemsInCart.filter((cart) => cart.id !== item.id);
@@ -235,6 +238,7 @@ const Checkout = (props) => {
                 email={deliveryInfo.email}
                 // email={localStorage.email}
                 callback={onSuccess}
+                onClose={onClose}
               />
             </div>
           )}

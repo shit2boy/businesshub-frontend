@@ -24,6 +24,11 @@ const PaymentPage = ({ user, loadUser }) => {
 
   const onSuccess = () => {
     // history.push("/admin");
+    // window.location.href = "/admin";
+    console.log("success");
+  };
+  const onClose = () => {
+    // history.push("/admin");
     window.location.href = "/admin";
   };
 
@@ -41,6 +46,7 @@ const PaymentPage = ({ user, loadUser }) => {
           // lastname={details.lastName}
           email={localStorage.email}
           callback={onSuccess}
+          onClose={onClose}
         />
       </div>
     </div>
