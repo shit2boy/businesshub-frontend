@@ -8,7 +8,7 @@ import { loadUser } from "../../actions/AuthAction";
 // import util from "../../utils/util";
 // import setAuthToken from "../../utils/SetAuthToken";
 import "./pay.css";
-import { withRouter, useHistory } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 const PaymentPage = ({ user, loadUser }) => {
   // const history = useHistory();
