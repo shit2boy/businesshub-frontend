@@ -227,7 +227,7 @@ const CreateShop = (props) => {
           )}
         </form>
 
-        {availableshops.length > 0 && (
+        {availableshops !== null && availableshops.length > 0 && (
           <>
             <div className=" mt-4 py-3">
               <div htmlFor="available shop" className="text-center">

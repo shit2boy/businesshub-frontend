@@ -11,7 +11,7 @@ import "./pay.css";
 import { withRouter, useHistory } from "react-router-dom";
 
 const PaymentPage = ({ user, loadUser }) => {
-  const history = useHistory();
+  // const history = useHistory();
   const [config, setConfig] = useState({});
   const [details, setDetails] = useState({});
   useEffect(() => {
@@ -23,13 +23,14 @@ const PaymentPage = ({ user, loadUser }) => {
   }, []);
 
   const onSuccess = () => {
-    history.push("/admin");
+    // history.push("/admin");
+    window.location.href = "/admin";
   };
 
   return (
     <div className="pay-container">
       <div className="pay">
-        <p>Please click the button below to proceed to Payment</p>
+        <p>Please click the button below to proceed to Pay your Merchant fee</p>
         <PayWithRave
           // btnText="Pay"
           tx_ref={config.paymentReference}

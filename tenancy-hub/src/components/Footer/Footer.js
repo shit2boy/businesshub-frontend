@@ -8,11 +8,11 @@ const Footer = () => {
         <div className="row">
           <div className="col-lg-4 col-md-3 col-sm">
             <h4>About</h4>
-            <p>
+            <h6 className="p-2">
               Tenancy hub is an online global platform that connects customer
               and buyers with convenience. We aim to bring back fun and easy of
               doing business. Sell at any time, any place at your own pace!
-            </p>
+            </h6>
             <ul className="d-flex">
               <li className="p-2">
                 <i className="fab fa-facebook fa-2x"></i>
@@ -30,7 +30,7 @@ const Footer = () => {
             <h4>Contact</h4>
             <div>
               <div>
-                <p className="contLink">
+                <h6 className="contLink">
                   {" "}
                   <a
                     href="mailto:yusufsaheedtaiwo@gmail.com"
@@ -38,9 +38,9 @@ const Footer = () => {
                   >
                     <i className="fas fa-phone" /> yusufsaheedtaiwo@gmail.com
                   </a>
-                </p>
+                </h6>
 
-                <p className="contLink">
+                <h6 className="contLink">
                   {" "}
                   <a
                     href="mailto:writeshittu@gmai.com"
@@ -48,20 +48,20 @@ const Footer = () => {
                   >
                     <i className="fas fa-tools" /> For support
                   </a>
-                </p>
-                <p className="contLink">
+                </h6>
+                <h6 className="contLink">
                   <a
                     href="mailto:yusufsaheedtaiwo@gmail.com"
                     style={{ color: "black" }}
                   >
                     <i className="fas fa-info" /> Inquiries
                   </a>
-                </p>
-                <p className="contLink">
+                </h6>
+                <h6 className="contLink">
                   <a href="mailto:yusufsaheedtaiwo@gmail.com">
                     <i className="fas fa-book" /> careers@tenancyhub.co
                   </a>
-                </p>
+                </h6>
               </div>
             </div>
           </div>
@@ -69,10 +69,18 @@ const Footer = () => {
             <div className="foot-courses-list">
               <h4>Quick Links</h4>
               <ul>
-                <li>About Us</li>
-                <li>Meet the Team</li>
-                <li>Plans</li>
-                <li>Contact Us</li>
+                <li>
+                  <h6>About Us</h6>
+                </li>
+                <li>
+                  <h6>Meet the Team</h6>
+                </li>
+                <li>
+                  <h6>Plans</h6>
+                </li>
+                <li>
+                  <h6>Contact Us</h6>
+                </li>
               </ul>
             </div>
           </div>

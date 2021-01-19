@@ -5,5 +5,5 @@
 .pay {
   display: grid;
   place-items: center;
-  height: 100%;
+  /* height: 100%; */
 }
