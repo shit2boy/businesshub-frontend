@@ -12,7 +12,7 @@ const persistConfig = {
 const productPersistConfig = {
   key: "product",
   storage,
-  whitelist: ["cart"],
+  whitelist: ["cart", "currencyId"],
 };
 
 const rootReducer = combineReducers({

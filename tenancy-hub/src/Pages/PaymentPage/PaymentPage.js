@@ -40,6 +40,7 @@ const PaymentPage = ({ user, loadUser }) => {
           // btnText="Pay"
           tx_ref={config.paymentReference}
           currency={config.currency}
+          country={config.countryCode ? config.countryCode : "NG"}
           amount={config.amount}
           name={details.firstName}
           phoneNumber={details.phoneNumber}

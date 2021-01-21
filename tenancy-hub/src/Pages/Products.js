@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 import { Skeleton } from "antd";
 import ProductCard from "../components/Productcard/ProductCard";
@@ -8,13 +8,13 @@ import { BackTop } from "antd";
 import "antd/dist/antd.css";
 
 const Products = ({
-  product: { items, loading },
+  product: { items, loading, currencyId },
   match,
   addToCart,
   getItems,
   getProducts,
 }) => {
-  const [currencyId, setCurrencyId] = useState("1");
+  // const [currencyId, setCurrencyId] = useState("");
   const notify = () =>
     toast.success("Added to cart !", {
       position: "top-right",
@@ -33,9 +33,14 @@ const Products = ({
     if (localStorage.token && localStorage.userType === "MERCHANT") {
       getItems(storeName);
     } else {
-      setCurrencyId(localStorage.currencyId);
-      localStorage.setItem("currencyId", currencyId);
+      // setCurrencyId(localStorage.currencyId);
+      // if (!localStorage.currencyId || localStorage.currencyId === null) {
+      // localStorage.setItem("currencyId", 1);
       getProducts(currencyId);
+      // } else {
+      //   localStorage.setItem("currencyId", currencyId);
+      //   getProducts(currencyId);
+      // }
     }
 
     //eslint-disable-next-line

@@ -6,6 +6,7 @@ import {
   FILTER_PRODUCT,
   DELETE_ITEM,
   DECREASE_CART_ITEM,
+  CHANGE_LOCATION,
   GET_TOTAL,
   GET_CART_LENGTH,
 } from "../actions/Types";
@@ -18,9 +19,9 @@ import {
 // import { getCurrencyType } from "../Services/CreateShoputil";
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
-// const inCart = [];
+
 const initialState = {
-  // inCart: JSON.parse(window.localStorage.getItem(inCart)),
+  currencyId: 1,
   cart: [],
   filtered: null,
   loading: true,
@@ -29,7 +30,6 @@ const initialState = {
   error: null,
   TotalAmountToPay: 0,
   inCartLength: 0,
-  currencyId: 1,
 };
 
 export default (state = initialState, action) => {
@@ -66,6 +66,12 @@ export default (state = initialState, action) => {
         ...state,
         cart: addItemToCart(state.cart, action.payload),
         TotalAmountToPay: getAmountToPay(state.cart),
+      };
+    case CHANGE_LOCATION:
+      localStorage.setItem("currencyId", action.payload);
+      return {
+        ...state,
+        currencyId: action.payload,
       };
     case DELETE_ITEM:
       return {

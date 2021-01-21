@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { getCurrencyType } from "../../Services/CreateShoputil";
 import { connect } from "react-redux";
-import { getProducts } from "../../actions/productAction";
+import { getProducts, getCurrencyId } from "../../actions/productAction";
 import "./changelocation.css";
 
-const ChangeLocation = ({ getProducts }) => {
+const ChangeLocation = ({ currencyId, getCurrencyId, getProducts }) => {
   const [currency, setCurrency] = useState([]);
   const [location, setLocation] = useState({});
   useEffect(() => {
-    // localStorage.setItem("currencyId", location.value);
     getCurrencyType(setCurrency);
+    localStorage.setItem("currencyId", currencyId);
     // eslint-disable-next-line
   }, []);
 
@@ -18,9 +18,9 @@ const ChangeLocation = ({ getProducts }) => {
       ...location,
       locationId: e.target.value,
     });
+    getCurrencyId(e.target.value);
     getProducts(e.target.value);
 
-    localStorage.setItem("currencyId", e.target.value);
     console.log(location);
   };
 
@@ -44,5 +44,10 @@ const ChangeLocation = ({ getProducts }) => {
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  currencyId: state.product.currencyId,
+});
 
-export default connect(null, { getProducts })(ChangeLocation);
+export default connect(mapStateToProps, { getProducts, getCurrencyId })(
+  ChangeLocation
+);

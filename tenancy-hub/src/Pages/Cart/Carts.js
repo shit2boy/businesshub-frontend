@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -87,45 +87,64 @@ const Carts = ({
         </thead>
         <tbody>
           {cart.map((t, index) => (
-            <tr key={index}>
-              <td>
-                <img
-                  src={t.imageUrl}
-                  className="img-fluid"
-                  alt="item"
-                  width="100px"
-                />
-              </td>
-              <td>{t.name}</td>
-              <td>
-                {" "}
-                <span onClick={() => decreaseCart(t)} className="pointer">
+            <Fragment key={index}>
+              <tr key={index}>
+                <td>
+                  <img
+                    src={t.imageUrl}
+                    className="img-fluid"
+                    alt="item"
+                    width="100px"
+                  />
+                </td>
+                <td>{t.name}</td>
+                <td>
                   {" "}
-                  &#10094;{" "}
-                </span>
-                {t.quantity}{" "}
-                <span onClick={() => addToCart(t)} className="pointer">
-                  {" "}
-                  &#10095;
-                </span>
-              </td>
-              <td>&#8358; {t.amount * t.quantity}</td>
-              <td onClick={() => deleteItem(t)}>
-                <i
-                  className="fas fa-trash fa-lg p-2"
-                  style={{ color: "black" }}
-                ></i>
-              </td>
-            </tr>
+                  <span onClick={() => decreaseCart(t)} className="pointer">
+                    {" "}
+                    &#10094;{" "}
+                  </span>
+                  {t.quantity}{" "}
+                  <span onClick={() => addToCart(t)} className="pointer">
+                    {" "}
+                    &#10095;
+                  </span>
+                </td>
+                <td>
+                  {t.shop.currency["shortCode"]} {t.amount * t.quantity}
+                </td>
+                <td onClick={() => deleteItem(t)}>
+                  <i
+                    className="fas fa-trash fa-lg p-2"
+                    style={{ color: "black" }}
+                  ></i>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+                <td>
+                  <h5 className="">
+                    {" "}
+                    TOTAL:{t.shop.currency["shortCode"]}
+                    {total.toFixed(2)}{" "}
+                    {/* {localStorage.getItem("total") ? localStorage.getItem("total") : 0}{" "} */}
+                  </h5>
+                </td>
+              </tr>
+            </Fragment>
           ))}
         </tbody>
       </Table>
-      <h4 className="text-right p-2">
+      {/* <h4 className="text-right p-2">
         {" "}
         TOTAL : &#8358;
         {total.toFixed(2)}{" "}
-        {/* {localStorage.getItem("total") ? localStorage.getItem("total") : 0}{" "} */}
-      </h4>
+        // {localStorage.getItem("total") ? localStorage.getItem("total") : 0}{" "} 
+      </h4> */}
       <div className="row mt-4 mb-5 ">
         <div className="p-3 m-auto text-white ">
           <BackToShop

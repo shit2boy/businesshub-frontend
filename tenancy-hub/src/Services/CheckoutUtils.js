@@ -39,7 +39,7 @@ export const getPaymentRefOnCheckout = async (callBackFunction, info) => {
       config
     );
 
-    // console.log(res.data);
+    console.log(res.data);
     callBackFunction(res.data);
   } catch (error) {
     console.error(error);

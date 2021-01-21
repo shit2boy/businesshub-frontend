@@ -10,6 +10,7 @@ import {
   GET_PREVIOUS_CARTS,
   FILTER_PRODUCT,
   DECREASE_CART_ITEM,
+  CHANGE_LOCATION,
   GET_CART_LENGTH,
 } from "../actions/Types";
 
@@ -107,6 +108,11 @@ export const filterProduct = (text) => async (dispatch) => {
     console.log(err);
     // dispatch({ type: ITEM_ERROR, payload: err.response.data });
   }
+};
+
+//CurrencyId for Location
+export const getCurrencyId = (id) => async (dispatch) => {
+  dispatch({ type: CHANGE_LOCATION, payload: id });
 };
 
 //Add contact

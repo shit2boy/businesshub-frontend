@@ -268,6 +268,8 @@ const CreateShop = (props) => {
                   // btnText="Pay Now to verify shop"
                   tx_ref={payRef.paymentReference}
                   currency={payRef.currency}
+                  // country={payRef.countryCode}
+                  country={payRef.countryCode ? payRef.countryCode : "NG"}
                   amount={payRef.amount}
                   name={shop.storeName}
                   phoneNumber=""

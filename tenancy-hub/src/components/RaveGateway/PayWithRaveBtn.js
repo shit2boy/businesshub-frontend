@@ -8,6 +8,7 @@ const PayWithRaveBtn = (props) => {
     tx_ref: props.tx_ref,
     amount: props.amount,
     currency: props.currency,
+    country: props.country,
 
     payment_options: "card,mobilemoney,ussd",
     customer: {

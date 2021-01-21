@@ -49,7 +49,7 @@ const Checkout = (props) => {
       setLoading(!loading);
       getPaymentRefOnCheckout(setpayConfig, deliveryInfo.address);
     }
-    console.log("see mrere");
+    console.log(payConfig);
   };
 
   const onChanges = (e) => {
@@ -63,10 +63,12 @@ const Checkout = (props) => {
     checkoutPaymentUpdate(payConfig.checkoutId);
     setTimeout(() => {
       props.history.push("/");
+      localStorage.clear("cart");
     }, 1500);
   };
   const onClose = () => {
     console.log("payment closed");
+    localStorage.clear("cart");
   };
 
   const deleteItem = (item, id) => {
@@ -213,7 +215,10 @@ const Checkout = (props) => {
                   &#10095;
                 </span>
               </td> */}
-                      <td>&#8358;{item.product["amount"] * item.quantity}</td>
+                      <td>
+                        <b>{item.currency["shortCode"]}</b>
+                        {item.product["amount"] * item.quantity}
+                      </td>
                       <td onClick={() => deleteItem(item, item.id)}>
                         <i
                           className="fas fa-trash fa-lg p-2"
@@ -230,6 +235,8 @@ const Checkout = (props) => {
               <PayWithRaveBtn
                 tx_ref={payConfig.transactionReference}
                 currency={payConfig.currency}
+                // country={payConfig.countryCode}
+                country={payConfig.countryCode ? payConfig.countryCode : "NG"}
                 amount={payConfig.totalAmount}
                 name={deliveryInfo.fullName}
                 redirect_url="/"
