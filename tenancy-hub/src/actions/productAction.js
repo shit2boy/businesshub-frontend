@@ -12,6 +12,7 @@ import {
   DECREASE_CART_ITEM,
   CHANGE_LOCATION,
   GET_CART_LENGTH,
+  CLEAR_CART,
 } from "../actions/Types";
 
 export const getItems = (storeId) => async (dispatch) => {
@@ -118,8 +119,6 @@ export const getCurrencyId = (id) => async (dispatch) => {
 //Add contact
 export const addToCart = (item) => async (dispatch) => {
   dispatch({ type: ADD_TO_CARTS, payload: item });
-
-  // contact.id = uuidv4();
 };
 
 //Delete contact
@@ -138,8 +137,11 @@ export const amountToPay = (item) => async (dispatch) => {
   dispatch({ type: GET_TOTAL, payload: item });
 };
 
-//Items in Cart
+export const clearCart = () => async (dispatch) => {
+  dispatch({ type: CLEAR_CART });
+};
 
+//Items in Cart
 export const itemInCart = (item) => async (dispatch) => {
   dispatch({ type: GET_CART_LENGTH, payload: item });
 };

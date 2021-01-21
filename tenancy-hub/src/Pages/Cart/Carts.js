@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -22,17 +22,19 @@ const Carts = ({
   history,
 }) => {
   const [total, setTotal] = useState(0);
-  // const [response, setResponse] = useState("");
+  // const [curr, setCurr] = useState("");
 
   useEffect(() => {
     // console.log(user);
     let total;
+    // let currency = cart.map((item) => item.shop.currency["shortCode"]);
     cart.reduce(
       (allQty, item) => (total = allQty + item.quantity * item.amount),
       0
     );
     // console.log(total);
     setTotal(total);
+    // setCurr(currency);
     localStorage.setItem("total", total);
     // eslint-disable-next-line
   }, [cart]);
@@ -87,64 +89,48 @@ const Carts = ({
         </thead>
         <tbody>
           {cart.map((t, index) => (
-            <Fragment key={index}>
-              <tr key={index}>
-                <td>
-                  <img
-                    src={t.imageUrl}
-                    className="img-fluid"
-                    alt="item"
-                    width="100px"
-                  />
-                </td>
-                <td>{t.name}</td>
-                <td>
+            <tr key={index}>
+              <td>
+                <img
+                  src={t.imageUrl}
+                  className="img-fluid"
+                  alt="item"
+                  width="100px"
+                />
+              </td>
+              <td>{t.name}</td>
+              <td>
+                {" "}
+                <span onClick={() => decreaseCart(t)} className="pointer">
                   {" "}
-                  <span onClick={() => decreaseCart(t)} className="pointer">
-                    {" "}
-                    &#10094;{" "}
-                  </span>
-                  {t.quantity}{" "}
-                  <span onClick={() => addToCart(t)} className="pointer">
-                    {" "}
-                    &#10095;
-                  </span>
-                </td>
-                <td>
-                  {t.shop.currency["shortCode"]} {t.amount * t.quantity}
-                </td>
-                <td onClick={() => deleteItem(t)}>
-                  <i
-                    className="fas fa-trash fa-lg p-2"
-                    style={{ color: "black" }}
-                  ></i>
-                </td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-                <td>
-                  <h5 className="">
-                    {" "}
-                    TOTAL:{t.shop.currency["shortCode"]}
-                    {total.toFixed(2)}{" "}
-                    {/* {localStorage.getItem("total") ? localStorage.getItem("total") : 0}{" "} */}
-                  </h5>
-                </td>
-              </tr>
-            </Fragment>
+                  &#10094;{" "}
+                </span>
+                {t.quantity}{" "}
+                <span onClick={() => addToCart(t)} className="pointer">
+                  {" "}
+                  &#10095;
+                </span>
+              </td>
+              <td>
+                {t.shop.currency["shortCode"]} {t.amount * t.quantity}
+              </td>
+              <td onClick={() => deleteItem(t)}>
+                <i
+                  className="fas fa-trash fa-lg p-2"
+                  style={{ color: "black" }}
+                ></i>
+              </td>
+            </tr>
           ))}
         </tbody>
       </Table>
-      {/* <h4 className="text-right p-2">
+      <h4 className="text-right p-2">
         {" "}
-        TOTAL : &#8358;
+        TOTAL:{/* TOTAL : &#8358; */}
+        {/* {curr} */}
         {total.toFixed(2)}{" "}
-        // {localStorage.getItem("total") ? localStorage.getItem("total") : 0}{" "} 
-      </h4> */}
+        {/* {localStorage.getItem("total") ? localStorage.getItem("total") : 0}{" "} */}
+      </h4>
       <div className="row mt-4 mb-5 ">
         <div className="p-3 m-auto text-white ">
           <BackToShop

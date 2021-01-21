@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import FormInput from "../../components/Form-input/form-input.component";
 import PayWithRaveBtn from "../../components/RaveGateway/PayWithRaveBtn";
 import { Table } from "react-bootstrap";
+import { connect } from "react-redux";
+import { clearCart } from "../../actions/productAction";
 import SubmitAddress from "../../components/CustomButton/CustomButton";
 import {
   getCartItemsOnCheckout,
@@ -11,7 +13,7 @@ import {
 import { deleteCartItem } from "../../Services/CartUtils";
 import "./Checkout.css";
 
-const Checkout = (props) => {
+const Checkout = ({ clearCart }, props) => {
   const [itemsInCart, setItemsInCart] = useState([]);
   const [loading, setLoading] = useState(false);
   const [deliveryInfo, setdeliveryInfo] = useState({});
@@ -49,7 +51,7 @@ const Checkout = (props) => {
       setLoading(!loading);
       getPaymentRefOnCheckout(setpayConfig, deliveryInfo.address);
     }
-    console.log(payConfig);
+    // console.log(payConfig);
   };
 
   const onChanges = (e) => {
@@ -62,13 +64,18 @@ const Checkout = (props) => {
   const onSuccess = () => {
     checkoutPaymentUpdate(payConfig.checkoutId);
     setTimeout(() => {
-      props.history.push("/");
-      localStorage.clear("cart");
-    }, 1500);
+      // props.history.push("/");
+      window.location.href = "/";
+    }, 1000);
+    clearCart();
   };
   const onClose = () => {
     console.log("payment closed");
+    setTimeout(() => {
+      props.history.push("/");
+    }, 1500);
     localStorage.clear("cart");
+    clearCart();
   };
 
   const deleteItem = (item, id) => {
@@ -255,4 +262,4 @@ const Checkout = (props) => {
   );
 };
 
-export default Checkout;
+export default connect(null, { clearCart })(Checkout);

@@ -9,6 +9,7 @@ import {
   CHANGE_LOCATION,
   GET_TOTAL,
   GET_CART_LENGTH,
+  CLEAR_CART,
 } from "../actions/Types";
 import {
   addItemToCart,
@@ -98,6 +99,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         inCartLength: getCartLength(state.cart),
+      };
+    case CLEAR_CART:
+      return {
+        ...state,
+        cart: [],
       };
 
     // case FILTER_CONTACT:
