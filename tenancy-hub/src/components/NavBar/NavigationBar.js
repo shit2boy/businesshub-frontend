@@ -42,6 +42,8 @@ const NavBar = ({ cart, logOut, filterProduct }) => {
     localStorage.removeItem("userType");
     localStorage.removeItem("isloggedIn");
     logOut();
+    // history.push(`/`);
+    window.location.href = "/";
   };
 
   const onSubmit = (e) => {

@@ -16,7 +16,9 @@ import "./VerifyAccount.css";
 const VerifyMercchant = (props) => {
   useEffect(() => {
     getBanks(setBank);
-    setShow(true);
+    if (localStorage.token && localStorage.userType === "MERCHANT") {
+      setShow(true);
+    }
 
     // eslint - disable - next - line;
   }, []);

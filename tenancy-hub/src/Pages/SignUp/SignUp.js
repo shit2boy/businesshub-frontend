@@ -240,7 +240,7 @@ const SignUp = (props) => {
               placeholder="Password"
             />
           </div>
-          <div className="">
+          {/* <div className="">
             <label>Confirm password</label>
             <span
               className="d-block"
@@ -255,8 +255,7 @@ const SignUp = (props) => {
               onChange={handleChange}
               placeholder="Confirm Password"
             />
-          </div>
-          {/* </div> */}
+          </div> */}
           <div>
             <label>Store Name</label>
             <span
