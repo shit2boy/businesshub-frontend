@@ -102,11 +102,11 @@ const NavBar = ({ cart, logOut, filterProduct }) => {
             </Nav.Item>
           </Nav>
           <Nav className="ml-auto">
-            <Nav.Item>
+            {/* <Nav.Item>
               <Link className="nav-link" to="/">
                 About us
               </Link>
-            </Nav.Item>
+            </Nav.Item> */}
             <Nav.Item>
               <SignUpButton
                 onClick={() => {

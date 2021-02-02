@@ -228,6 +228,27 @@ const RegisterCustomer = (props) => {
           </div>
           <div className="col- lg-3 col-sm col-md">
             <div>
+              <label htmlFor="Password">
+                <i class="fas fa-lock" /> Password
+              </label>
+              <span
+                className="d-block"
+                style={{ color: "#dd2b0e", fontSize: "0.875rem" }}
+              >
+                {errors["password"]}
+              </span>
+              <FormInput
+                type="password"
+                name="password"
+                onChange={handleChange}
+                placeholder="password"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="row ">
+          <div className="col- lg-3 col-sm col-md">
+            <div>
               <label htmlFor="address">
                 <i class="fas fa-address-card" /> Address
               </label>
@@ -264,9 +285,7 @@ const RegisterCustomer = (props) => {
               />
             </div>
           </div>
-        </div>
-        <div className="row ">
-          <div className="col- lg-3 col-sm col-md">
+          {/* <div className="col- lg-3 col-sm col-md">
             <div>
               <label htmlFor="Password">
                 <i class="fas fa-lock" /> Password
@@ -284,8 +303,8 @@ const RegisterCustomer = (props) => {
                 placeholder="password"
               />
             </div>
-          </div>
-          <div className="col- lg-3 col-sm col-md">
+          </div> */}
+          {/* <div className="col- lg-3 col-sm col-md">
             <div>
               <label htmlFor="ConfirmPassword">
                 <i class="fas fa-lock" /> Confirm Password
@@ -303,7 +322,7 @@ const RegisterCustomer = (props) => {
                 placeholder="password"
               />
             </div>
-          </div>
+          </div> */}
         </div>
         <Register style={{ width: "100%" }} type="submit">
           {loading && <i class="spinner-border spinner-border-sm"></i>} Sign Up
