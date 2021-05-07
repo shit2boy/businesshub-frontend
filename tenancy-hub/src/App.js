@@ -1,4 +1,4 @@
-import React, { lazy, Fragment } from "react";
+import React, { lazy, Fragment, Suspense } from "react";
 import NavBar from "./components/NavBar/NavigationBar";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
@@ -46,26 +46,27 @@ const App = () => {
       <PersistGate persistor={persistor}>
         <Fragment>
           <NavBar />
-
-          <Switch>
-            <Route exact path="/" component={Products} />
-            <Route path="/Login" component={Login} />
-            <Route path="/admin" component={MerchantDashboard} />
-            <Route path="/online-store/:storeName" component={Products} />
-            <Route path="/merchant-corner" component={Homepage} />
-            <Route path="/cart" component={Carts} />
-            <Route path="/checkout" component={Checkout} />
-            <Route path="/selectshop" component={MerchantShop} />
-            <Route path="/registration-fee" component={PaymentPage} />
-            <Route path="/payment" component={PayWithRaveBtn} />
-            <Route path="/verify-merchant" component={VerifyMercchant} />
-            <Route path="/add-product" component={AddFormProduct} />
-            <Route path="/create-shop" component={CreateShop} />
-            {/* <Route path="/admin" component={MerchantDashboard} /> */}
-            <Route path="/register" component={SignUp} />
-            <Route path="/register-customer" component={RegisterCustomer} />
-            <Route component={ErrorPage} />
-          </Switch>
+          <Suspense fallback={<p>Loading...</p>}>
+            <Switch>
+              <Route exact path="/" component={Products} />
+              <Route path="/Login" component={Login} />
+              <Route path="/admin" component={MerchantDashboard} />
+              <Route path="/online-store/:storeName" component={Products} />
+              <Route path="/merchant-corner" component={Homepage} />
+              <Route path="/cart" component={Carts} />
+              <Route path="/checkout" component={Checkout} />
+              <Route path="/selectshop" component={MerchantShop} />
+              <Route path="/registration-fee" component={PaymentPage} />
+              <Route path="/payment" component={PayWithRaveBtn} />
+              <Route path="/verify-merchant" component={VerifyMercchant} />
+              <Route path="/add-product" component={AddFormProduct} />
+              <Route path="/create-shop" component={CreateShop} />
+              {/* <Route path="/admin" component={MerchantDashboard} /> */}
+              <Route path="/register" component={SignUp} />
+              <Route path="/register-customer" component={RegisterCustomer} />
+              <Route component={ErrorPage} />
+            </Switch>
+          </Suspense>
           <ToastContainer />
         </Fragment>
       </PersistGate>
