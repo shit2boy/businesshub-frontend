@@ -9,7 +9,7 @@ import "./login.css";
 
 const Login = ({ login, isAuthenticated, error }, ...props) => {
   const history = useHistory();
-  console.log(history);
+  // console.log(history);
   const goToPreviousPath = () => {
     history.goBack();
   };
@@ -104,6 +104,7 @@ const Login = ({ login, isAuthenticated, error }, ...props) => {
             type="email"
             name="email"
             // value={email}
+            autocomplete="email"
             placeholder="Enter email Address"
             onChange={onChange}
             required
@@ -120,6 +121,7 @@ const Login = ({ login, isAuthenticated, error }, ...props) => {
           <FormInput
             type="password"
             name="password"
+            autocomplete="password"
             // value={password}
             placeholder="Enter password"
             onChange={onChange}
