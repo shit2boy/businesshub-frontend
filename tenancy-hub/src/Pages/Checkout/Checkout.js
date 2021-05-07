@@ -103,7 +103,7 @@ const Checkout = ({ clearCart }, props) => {
         <div className="col-lg-6 col-sm col-md">
           <form onSubmit={onSubmit}>
             <div className="col- lg-3 col-sm col-md">
-              <h4>Please provide delivery details</h4>
+              <h4 className="textStroke">Please provide delivery details</h4>
 
               <div>
                 <label htmlFor="Name">

@@ -4,3 +4,9 @@
   border: 1px solid lightgrey;
   border-radius: 3px;
 }
+
+.textStroke {
+  -webkit-text-stroke: 2px rgba(78, 15, 15, 0.5);
+
+  color: transparent;
+}

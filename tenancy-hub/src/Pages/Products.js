@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { toast } from "react-toastify";
-import { Skeleton } from "antd";
+// import { Skeleton } from "antd";
+import Skeleton from "react-loading-skeleton";
 import ProductCard from "../components/Productcard/ProductCard";
 import { connect } from "react-redux";
 import { addToCart, getItems, getProducts } from "../actions/productAction";
 import { BackTop } from "antd";
 import "antd/dist/antd.css";
+import Banner from "../components/Carousell/Banner";
 
 const Products = ({
   product: { items, loading, currencyId },
@@ -46,19 +48,29 @@ const Products = ({
     //eslint-disable-next-line
   }, []);
 
-  if (items !== null && loading) {
-    return (
-      <div className="container">
-        <Skeleton active />
-        <br />
-        <Skeleton active />
-      </div>
-    );
-  }
+  // if (items !== null && loading) {
+  //   return (
+
+  //   );
+  // }
 
   return (
     <>
-      {items.length > 0 ? (
+      <div className="h-25">
+        <Banner />
+      </div>
+      {items !== null && loading ? (
+        <div className="container mt-5">
+          {[...new Array(15)].map((_, index) => (
+            <Skeleton
+              className="col-lg-2 col-sm col-md-3 m-2"
+              key={index}
+              width={300}
+              height={200}
+            />
+          ))}
+        </div>
+      ) : items.length > 0 ? (
         <div
           className="container-fluid offset-1 mt-5"
           style={{ marginBottom: "100px" }}

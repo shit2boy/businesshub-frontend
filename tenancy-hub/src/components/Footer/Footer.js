@@ -33,10 +33,10 @@ const Footer = () => {
                 <h6 className="contLink">
                   {" "}
                   <a
-                    href="mailto:yusufsaheedtaiwo@gmail.com"
+                    href="mailto:writeshittu@gmail.com"
                     style={{ color: "black" }}
                   >
-                    <i className="fas fa-phone" /> yusufsaheedtaiwo@gmail.com
+                    <i className="fas fa-phone" /> Jumga@gmail.com
                   </a>
                 </h6>
 
@@ -51,14 +51,14 @@ const Footer = () => {
                 </h6>
                 <h6 className="contLink">
                   <a
-                    href="mailto:yusufsaheedtaiwo@gmail.com"
+                    href="mailto:writeshittu@gmail.com"
                     style={{ color: "black" }}
                   >
                     <i className="fas fa-info" /> Inquiries
                   </a>
                 </h6>
                 <h6 className="contLink">
-                  <a href="mailto:yusufsaheedtaiwo@gmail.com">
+                  <a href="mailto:writeshittu@gmail.com">
                     <i className="fas fa-book" /> careers@tenancyhub.co
                   </a>
                 </h6>
@@ -69,17 +69,17 @@ const Footer = () => {
             <div className="foot-courses-list">
               <h4>Quick Links</h4>
               <ul>
-                <li>
+                <li className="pointer">
                   <h6>About Us</h6>
                 </li>
                 <li>
-                  <h6>Meet the Team</h6>
+                  <h6 className="pointer">Meet the Team</h6>
                 </li>
                 <li>
-                  <h6>Plans</h6>
+                  <h6 className="pointer">Plans</h6>
                 </li>
                 <li>
-                  <h6>Contact Us</h6>
+                  <h6 className="pointer">Contact Us</h6>
                 </li>
               </ul>
             </div>

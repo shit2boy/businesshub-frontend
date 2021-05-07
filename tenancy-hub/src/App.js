@@ -1,32 +1,40 @@
-import React, { Fragment } from "react";
+import React, { lazy, Fragment } from "react";
 import NavBar from "./components/NavBar/NavigationBar";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-import Login from "./Pages/Login-Modal/Login";
-import SignUp from "./Pages/SignUp/SignUp";
+// import Login from "./Pages/Login-Modal/Login";
+// import SignUp from "./Pages/SignUp/SignUp";
 import Homepage from "./Pages/Homepage";
 // import MerchantDashboard from "./Pages/Dashboard/Merchant-Dashboard";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
-
+import Products from "./Pages/Products";
 import { store, persistor } from "./Store";
 
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
-import Products from "./Pages/Products";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import PrivateRoute from "./components/routing/PrivateRoute";
-import AddFormProduct from "./Pages/AddProductForm/AddFormProduct";
-import Carts from "./Pages/Cart/Carts";
-import VerifyMercchant from "./Pages/VerifyAccount/Verify-Merchant";
-import PayWithRaveBtn from "./components/RaveGateway/PayWithRaveBtn";
 import setAuthToken from "./utils/SetAuthToken";
-import PaymentPage from "./Pages/PaymentPage/PaymentPage";
-import CreateShop from "./Pages/CreateShop/CreateShop";
-import MerchantDashboard from "./Pages/Dashboard/Dashboard";
-import MerchantShop from "./Pages/Merchant-Stores/MerchantShop";
-import Checkout from "./Pages/Checkout/Checkout";
 import RegisterCustomer from "./Pages/Customer-Register/RegisterCustomer";
+
+const Login = lazy(() => import("./Pages/Login-Modal/Login"));
+const SignUp = lazy(() => import("./Pages/SignUp/SignUp"));
+const AddFormProduct = lazy(() =>
+  import("./Pages/AddProductForm/AddFormProduct")
+);
+const Carts = lazy(() => import("./Pages/Cart/Carts"));
+const VerifyMercchant = lazy(() =>
+  import("./Pages/VerifyAccount/Verify-Merchant")
+);
+const PaymentPage = lazy(() => import("./Pages/Cart/Carts"));
+const Checkout = lazy(() => import("./Pages/Checkout/Checkout"));
+const PayWithRaveBtn = lazy(() =>
+  import("./components/RaveGateway/PayWithRaveBtn")
+);
+const CreateShop = lazy(() => import("./Pages/CreateShop/CreateShop"));
+const MerchantDashboard = lazy(() => import("./Pages/Dashboard/Dashboard"));
+const MerchantShop = lazy(() => import("./Pages/Merchant-Stores/MerchantShop"));
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
