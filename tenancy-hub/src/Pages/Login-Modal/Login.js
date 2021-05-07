@@ -9,14 +9,19 @@ import "./login.css";
 
 const Login = ({ login, isAuthenticated, error }, ...props) => {
   const history = useHistory();
+  console.log(history);
+  const goToPreviousPath = () => {
+    history.goBack();
+  };
+
   useEffect(() => {
     if (localStorage.token && localStorage.userType === "MERCHANT") {
       history.push("/admin");
-      // window.href = "/admin";
-      // console.log("ddffssd");
     }
     if (localStorage.token && localStorage.userType === "CUSTOMER") {
-      history.push("/");
+      goToPreviousPath();
+
+      // history.push("/");
     }
 
     // if (error === "Invalid Credentials") {
