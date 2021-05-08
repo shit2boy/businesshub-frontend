@@ -57,7 +57,7 @@ const DownloadOrdersReport = (
 
                 <td>
                   <select
-                    className="mt-0"
+                    className="select mt-0"
                     value={props.values}
                     onChange={(e) => {
                       onchange(e);

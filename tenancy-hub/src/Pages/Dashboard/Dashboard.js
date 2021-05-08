@@ -62,7 +62,7 @@ const MerchantDashboard = (props) => {
 
   useEffect(() => {
     // loadUser();
-    if (!localStorage.token) {
+    if (!localStorage.token || localStorage.userType === "CUSTOMER") {
       props.history.push("/login");
     }
     const ref = async () => {

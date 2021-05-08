@@ -1,5 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import PropTypes from "prop-types";
+
 import "./productcard.css";
 
 const ProductCard = ({ item, onClickToCart }) => {
@@ -37,5 +39,8 @@ const ProductCard = ({ item, onClickToCart }) => {
     </div>
   );
 };
-
+ProductCard.propTypes = {
+  onClickToCart: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired,
+};
 export default ProductCard;

@@ -176,6 +176,7 @@ const CreateShop = (props) => {
             {errors["currencyId"]}
           </span>
           <select
+            className="select"
             value={shop.currencyId}
             onChange={onChanges}
             name="currencyId"
@@ -196,6 +197,7 @@ const CreateShop = (props) => {
             {errors["dispatchRiderId"]}
           </span>
           <select
+            className="select"
             value={shop.dispatchRiderId}
             onChange={onChanges}
             name="dispatchRiderId"
@@ -250,6 +252,7 @@ const CreateShop = (props) => {
                 {payRef.message}
               </span>
               <select
+                className="select"
                 value={shopcreated.shopId}
                 onChange={onChanges}
                 name="shopId"

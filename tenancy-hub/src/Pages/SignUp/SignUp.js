@@ -185,6 +185,7 @@ const SignUp = (props) => {
             <FormInput
               type="text"
               name="firstName"
+              autoComplete="firstname"
               // value={firstname}
               onChange={handleChange}
               placeholder="Firstname"
@@ -201,6 +202,7 @@ const SignUp = (props) => {
             <FormInput
               type="text"
               // value={lastname}
+              autoComplete="lastname"
               name="lastName"
               onChange={handleChange}
               placeholder="Last Name"
@@ -218,6 +220,7 @@ const SignUp = (props) => {
             <FormInput
               type="email"
               //   value={email}
+              autoComplete="email"
               name="email"
               onChange={handleChange}
               placeholder="Enter email address"
@@ -235,6 +238,7 @@ const SignUp = (props) => {
             <FormInput
               type="password"
               // value={password}
+              autoComplete="password"
               name="password"
               onChange={handleChange}
               placeholder="Password"
@@ -268,6 +272,7 @@ const SignUp = (props) => {
               type="text"
               //   value={storeName}
               name="storeName"
+              autoComplete="store-name"
               onChange={handleChange}
               placeholder="Store name"
             />
@@ -283,6 +288,7 @@ const SignUp = (props) => {
             <FormInput
               type="text"
               //   value={storeUrl}
+              autoComplete="phone-number"
               name="phoneNumber"
               onChange={handleChange}
               placeholder="Phone Number"
@@ -295,6 +301,7 @@ const SignUp = (props) => {
               name="description"
               //   value={description}
               onChange={handleChange}
+              autoComplete="details"
               placeholder="Brief Store details"
               //   style={{ width: "100%" }}
               rows="3"
@@ -312,6 +319,7 @@ const SignUp = (props) => {
               type="text"
               onChange={handleChange}
               name="address"
+              autoComplete="address"
               //   value={address}
               placeholder="Address"
             />

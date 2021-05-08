@@ -54,7 +54,8 @@ const OrderedItemTable = ({ orderedItems, onfilter }) => {
 
                 <td>
                   <select
-                    className="mt-0"
+                    className="select mt-0"
+                    style={{ marginBottom: "0px" }}
                     value={filterparams.category}
                     onChange={onChange}
                     name="productCategory"

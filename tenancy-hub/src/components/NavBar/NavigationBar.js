@@ -13,6 +13,7 @@ import "./Navbar.css";
 const NavBar = ({ cart, logOut, filterProduct }) => {
   // const [showNav, setShowNav] = useState(false);
   const history = useHistory();
+  // console.log("log", history);
   const [isCustomer, setIsCustomer] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -75,11 +76,15 @@ const NavBar = ({ cart, logOut, filterProduct }) => {
         variant="dark"
       >
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <div className="logo">
-          <Link to="/">
-            {" "}
-            <span style={{ color: "#ffb31a", fontSize: "40px" }}>J</span>umga
-          </Link>
+        <div
+          className="logo"
+          onClick={() => {
+            history.push("/");
+          }}
+        >
+          {/* <Link to="/"> */}{" "}
+          <span style={{ color: "#ffb31a", fontSize: "40px" }}>J</span>umga
+          {/* </Link> */}
         </div>
 
         <Navbar.Collapse id="responsive-navbar-nav">

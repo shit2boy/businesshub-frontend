@@ -1,6 +1,5 @@
 import React, { lazy, Fragment, Suspense } from "react";
 import NavBar from "./components/NavBar/NavigationBar";
-import "./App.css";
 import { Route, Switch } from "react-router-dom";
 // import Login from "./Pages/Login-Modal/Login";
 // import SignUp from "./Pages/SignUp/SignUp";
@@ -17,6 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import PrivateRoute from "./components/routing/PrivateRoute";
 import setAuthToken from "./utils/SetAuthToken";
 import RegisterCustomer from "./Pages/Customer-Register/RegisterCustomer";
+import "./App.css";
 
 const Login = lazy(() => import("./Pages/Login-Modal/Login"));
 const SignUp = lazy(() => import("./Pages/SignUp/SignUp"));

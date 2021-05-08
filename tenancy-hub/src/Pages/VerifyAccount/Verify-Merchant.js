@@ -131,7 +131,12 @@ const VerifyMercchant = (props) => {
             >
               {errors["id"]}
             </span>
-            <select value={user.id} onChange={onChanges} name="id">
+            <select
+              className="select"
+              value={user.id}
+              onChange={onChanges}
+              name="id"
+            >
               <option value="Select Bank">Select Bank</option>
               {bank.map((b) => (
                 <option key={b.id} value={b.id}>

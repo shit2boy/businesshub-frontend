@@ -74,25 +74,7 @@ const Login = ({ login, isAuthenticated, error }, ...props) => {
   return (
     <div className="container">
       <div className="place-form">
-        {/* <span onClick={() => setShow(true)}>Login</span> */}
-
-        {/* <Modal
-        // {...props}
-        show={show}
-        onHide={() => setShow(false)}
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            <h1>
-              Account <span style={{ color: "#004182" }}> Login</span>
-            </h1>
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body> */}
         <form onSubmit={onSubmit}>
-          {/* <div className="formGroup"> */}
           <label htmlFor="email">Email</label>
           <span
             className="d-block"
@@ -104,13 +86,11 @@ const Login = ({ login, isAuthenticated, error }, ...props) => {
             type="email"
             name="email"
             // value={email}
-            autocomplete="email"
+            autoComplete="email"
             placeholder="Enter email Address"
             onChange={onChange}
             required
           />
-          {/* </div> */}
-          {/* <div className="formGroup"> */}
           <label htmlFor="password">Password</label>
           <span
             className="d-block"
@@ -121,7 +101,7 @@ const Login = ({ login, isAuthenticated, error }, ...props) => {
           <FormInput
             type="password"
             name="password"
-            autocomplete="password"
+            autoComplete="password"
             // value={password}
             placeholder="Enter password"
             onChange={onChange}
@@ -155,8 +135,6 @@ const Login = ({ login, isAuthenticated, error }, ...props) => {
             </Link>{" "}
           </h6>
         </div>
-        {/* </Modal.Body>
-      </Modal> */}
       </div>
     </div>
   );
